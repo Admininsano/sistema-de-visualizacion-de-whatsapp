@@ -1,0 +1,22 @@
+{
+  "name": "whatsapp-chat-visualizer",
+  "private": true,
+  "version": "1.0.0",
+  "workspaces": [
+    "apps/*"
+  ],
+  "scripts": {
+    "dev": "concurrently -k \"npm:dev:web\" \"npm:dev:api\"",
+    "dev:web": "npm --workspace @whatsapp-chat-visualizer/web run dev",
+    "dev:api": "npm --workspace @whatsapp-chat-visualizer/api run dev",
+    "build": "npm run build:api && npm run build:web",
+    "build:web": "npm --workspace @whatsapp-chat-visualizer/web run build",
+    "build:api": "npm --workspace @whatsapp-chat-visualizer/api run build",
+    "preview": "npm run build && concurrently -k \"npm:preview:web\" \"npm:preview:api\"",
+    "preview:web": "npm --workspace @whatsapp-chat-visualizer/web run preview",
+    "preview:api": "npm --workspace @whatsapp-chat-visualizer/api run start"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}
